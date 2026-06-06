@@ -20,7 +20,7 @@ const Profile = ({ user }) => {
   };
 
   return (
-<div className="bg-transparent pb-14 w-[95%] mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] text-left">      
+<div className="bg-transparent pb-14 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] text-left">      
       {/* 🔴 1. EXECUTIVE ZONE COMPONENT BRAND HEADER */}
       <div className="flex items-center gap-3 mt-2 sm:mt-4 mb-6">
         <div className="bg-[#880808] p-2 rounded-xl text-white shadow-md shadow-red-900/20 shrink-0">

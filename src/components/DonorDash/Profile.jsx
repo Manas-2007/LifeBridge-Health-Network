@@ -36,7 +36,7 @@ const Profile = ({ user, onUpdateProfile }) => {
   };
 
   return (
-    <div className="bg-transparent pb-16 w-[95%] mx-auto max-w-[1700px] select-none animate-[fadeIn_0.5s_ease-out] mt-4 md:mt-0 lg:mt-2">
+    <div className="bg-transparent pb-16 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.5s_ease-out] mt-4 md:mt-0 lg:mt-2">
 
       {/* ================= 🔴GLASS OVERLAY HERO HEAD ================= */}
       <div className="relative bg-gradient-to-br from-white via-white to-gray-50/40 rounded-3xl p-5 sm:p-6 md:p-10 border border-gray-400/70 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] overflow-hidden mb-6 sm:mb-8 text-left group">

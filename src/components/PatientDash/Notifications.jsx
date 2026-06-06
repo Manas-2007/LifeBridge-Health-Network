@@ -160,7 +160,7 @@ const Notifications = () => {
   };
 
   return (
-<div className="bg-transparent pb-14 w-[95%] mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">      
+<div className="bg-transparent pb-14 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">      
       {/* 🔴 HEADER MANAGEMENT BAR WITH ACTIONS */}
       <section className="w-full flex flex-row items-center justify-between gap-4 mb-4 sm:mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-md text-left">
         <div className="flex items-center gap-3">

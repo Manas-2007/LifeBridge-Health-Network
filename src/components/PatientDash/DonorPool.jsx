@@ -198,7 +198,7 @@ const DonorPool = () => {
   });
 
   return (
-<div className="bg-transparent pb-14 w-[95%] mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">      
+<div className="bg-transparent pb-14 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">      
       {/* 🔴 1. PORTAL BRANDING DIRECTORY NAVIGATION HEADER */}
       <section className="w-full flex flex-col md:flex-row items-center justify-between gap-4 mb-6 bg-white p-5 rounded-2xl border border-gray-200/80 shadow-md text-left">
         <div className="flex items-center gap-3 w-full md:w-auto">

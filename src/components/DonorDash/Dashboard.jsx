@@ -142,7 +142,7 @@ const Dashboard = ({ setIsLoggedIn, setUser: setGlobalUser }) => {
       <main className="flex-1 md:ml-[250px] flex flex-col h-screen overflow-y-auto no-scrollbar">
         <StatusNavbar setIsOpen={setIsOpen} user={donorData} />
         
-        <div className="w-[95%] mx-auto max-w-[1700px] px-5 md:px-8 lg:px-12 pb-[35px]">
+        <div className="w-full max-w-[1700px] mx-auto px-5 md:px-8 lg:px-12 pb-[35px]">
 
           <Routes>
             {/* Default Index Route */}
