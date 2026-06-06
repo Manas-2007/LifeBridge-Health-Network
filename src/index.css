@@ -1,0 +1,32 @@
+/* ========================================================
+   🩸 NEW DEFINITIVE, SUPER-THIN BLOODY RED SCROLLBAR (WEBKIT)
+   ============================================= */
+
+/* Firefox compatibility backup */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #b30000 #f9f9f9;
+}
+
+/* 1. SCROLLBAR WIDTH */
+::-webkit-scrollbar {
+  width: 4px;  
+  height: 4px;  
+}
+
+/* 2. TRACK (BACKGROUD - TECHNICALLY INVISIBLE BUT SMOOTH) */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+/* 3. THUMB (THE SLEEK RED LINE) */
+::-webkit-scrollbar-thumb {
+  background: #b30000;   
+  border-radius: 4px; 
+}
+
+/* 4. HOVER EFFECT  */
+::-webkit-scrollbar-thumb:hover {
+  background: #800000;  
+  cursor: pointer;
+}
