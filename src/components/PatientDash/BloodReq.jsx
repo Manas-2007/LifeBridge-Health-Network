@@ -102,8 +102,7 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
   };
 
   return (
-<div className="bg-transparent pb-14 w-full px-2 sm:px-4 select-none animate-[fadeIn_0.4s_ease-out] relative mt-4 md:mt-0 lg:mt-2">
-  
+<div className="bg-transparent pb-14 w-[95%] mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] relative mt-4 md:mt-0 lg:mt-2">  
       {/* 🔴 PORTAL EXECUTIVE BRANDING HERO BANNER */}
       <section className="relative overflow-hidden bg-white rounded-2xl p-5 sm:p-6 md:p-4 border border-gray-300 shadow-sm mb-5 sm:mb-6 text-left">
         <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 bg-red-50/40 rounded-full blur-3xl pointer-events-none" />

@@ -31,7 +31,7 @@ const PatientDashboard = ({ onLogout, user }) => {
         <Navbar setIsOpen={setIsOpen} user={user} />
         
         {/* Main Content Wrapper */}
-        <div className="w-full max-w-[1400px] mx-auto px-5 md:px-8 lg:px-12 pb-[35px] mt-2">
+        <div className="w-[95%] mx-auto max-w-[1700px] px-5 md:px-8 lg:px-12 pb-[35px] mt-2">
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="*" element={<Hero />} /> 

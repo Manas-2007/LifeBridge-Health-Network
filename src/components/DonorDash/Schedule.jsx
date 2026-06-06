@@ -79,7 +79,7 @@ const Schedule = () => {
   };
 
   return (
-<div className="bg-transparent pb-5 w-full px-2 select-none animate-[fadeIn_0.4s_ease-out]">
+<div className="bg-transparent pb-5 w-[95%] mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out]">
       {/* 🔴 1. PORTAL BRANDING HEADER */}
       <div className="px-1 text-left mt-5 sm:mt-4 mb-6">
         <h1 className="text-xl sm:text-2xl font-semibold text-gray-900 tracking-wide leading-none">

@@ -294,8 +294,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="animate-[fadeIn_0.4s_ease-out] space-y-5 pb-10 w-full px-1 sm:px-2 select-none ">
-      
+<div className="animate-[fadeIn_0.4s_ease-out] space-y-5 pb-10 w-[95%] mx-auto max-w-[1700px] select-none ">      
       {/* 🔴 1. MOBILE ONLY IMPACT BANNER (Hidden on Desktop screens via md:hidden) */}
       <section className="relative overflow-hidden bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/80 shadow-md text-left md:hidden mt-2">
         <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-red-500/10 via-transparent to-transparent rounded-bl-full pointer-events-none" />

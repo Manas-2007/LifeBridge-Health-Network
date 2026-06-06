@@ -142,7 +142,7 @@ const ReqTab = () => {
   });
 
   return (
-<div className="h-full bg-transparent pb-2 md:pb-14 w-full px-2 select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">    
+<div className="h-full bg-transparent pb-2 md:pb-14 w-[95%] mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">    
     {/* 🔴 1. HEADER & MATRIX SEARCH FILTERS AREA */}
       <div className="flex flex-col gap-4 text-left mt-2 sm:mt-4 mb-5 sm:mb-6">
         

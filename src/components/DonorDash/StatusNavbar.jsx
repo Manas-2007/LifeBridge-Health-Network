@@ -12,7 +12,7 @@ const StatusNavbar = ({ setIsOpen, user, onOpenLogin }) => {
 
   return (
     <header className="w-full bg-white border-b border-gray-100 shadow-sm px-5 md:px-8 lg:px-12 py-3 md:py-4 sticky top-0 z-20 select-none">
-      <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-0">
+      <div className="w-full max-w-[1700px] mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-0">
       
       {/* 🔴 TOP BAR CONTAINER */}
       <div className="flex items-center justify-between min-w-0 w-full md:w-auto">

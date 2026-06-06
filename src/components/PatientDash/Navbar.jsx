@@ -13,8 +13,8 @@ const Navbar = ({ setIsOpen, user }) => {
 
   return (
     <>
-      <nav className="w-full bg-white border-b border-gray-100 shadow-sm px-5 md:px-8 lg:px-12 py-3 md:py-4 sticky top-0 z-30 select-none">
-        <div className="w-full max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-0">
+      <nav className="w-full bg-white border-b border-gray-100 shadow-sm sticky top-0 z-30 select-none">
+        <div className="w-[95%] mx-auto max-w-[1700px] flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-0 py-3 md:py-4">
         
         {/* TOP BAR CONTAINER */}
         <div className="flex items-center justify-between min-w-0 w-full md:w-auto">

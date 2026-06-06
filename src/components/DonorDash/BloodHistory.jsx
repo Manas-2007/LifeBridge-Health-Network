@@ -50,8 +50,7 @@ const DonationHistory = () => {
   };
 
   return (
-    <div className="bg-transparent pb-14 w-full px-2 select-none animate-[fadeIn_0.4s_ease-out]">
-      
+<div className="bg-transparent pb-14 w-[95%] mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out]">      
       {/* 🔴 1. HEADER BAR */}
       <section className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-white p-5 rounded-2xl border border-gray-300 shadow-sm mt-2 sm:mt-4">
         <div className="flex items-center gap-3.5 w-full sm:w-auto">

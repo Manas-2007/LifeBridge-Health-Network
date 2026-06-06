@@ -81,8 +81,7 @@ const History = () => {
   };
 
   return (
-    <div className="bg-transparent pb-14 w-full px-2 select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">
-      
+<div className="bg-transparent pb-14 w-[95%] mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">      
       {/* 🔴 1. HEADER MANAGEMENT SECTION */}
       <section className="w-full flex flex-col lg:flex-row items-center justify-between gap-4 mb-5 bg-white p-4 sm:p-5 rounded-2xl border border-gray-300 shadow-sm mt-2 sm:mt-4">
         

@@ -52,7 +52,7 @@ const FooterSection = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row items-start gap-6 mt-8 pb-10 w-full select-none">
+    <div className="flex flex-col lg:flex-row items-start gap-6 mt-8 pb-10 w-[95%] mx-auto max-w-[1700px] select-none">
       
       {/* 🏥 LEFT: YOUR DONATION HISTORY CELL */}
       <div className="w-full lg:flex-[2] bg-white rounded-2xl p-5 sm:p-6 md:p-8 border border-gray-200/80 shadow-md text-left">
