@@ -40,12 +40,10 @@ const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // ================= 🔄 FETCH LIVE ALERTS FROM BACKEND =================
   const fetchNotifications = async () => {
     try {
       if (notifications.length === 0) setLoading(true); 
 
-      // 🔴 URL FIX: Seedha sabhi notifications bulao
       const apiUrl = 'https://lifedrop-backend-orz5.onrender.com/api/notifications'; 
       const response = await axios.get(apiUrl);
       
@@ -60,7 +58,7 @@ const Notifications = () => {
 
       const normalizedData = rawData
         .filter(notif => notif.type !== 'COMPLETED')
-        .reverse() // 🔴 SABSE NAYI UPAR AAYEGI
+        .reverse() 
         .map(notif => {
         const isAlreadyRead = notif.isRead === true; 
 
@@ -118,7 +116,7 @@ const Notifications = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // ================= ✨ ACTION HANDLERS WITH DB SYNC =================
+  // =================ACTION HANDLERS WITH DB SYNC =================
 
   const handleMarkAllRead = async () => {
     try {
@@ -161,7 +159,7 @@ const Notifications = () => {
 
   return (
 <div className="bg-transparent pb-14 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">      
-      {/* 🔴 HEADER MANAGEMENT BAR WITH ACTIONS */}
+      {/* HEADER MANAGEMENT BAR WITH ACTIONS */}
       <section className="w-full flex flex-row items-center justify-between gap-4 mb-4 sm:mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-md text-left">
         <div className="flex items-center gap-3">
           <div className="p-2 sm:p-2.5 bg-red-50 rounded-xl text-[#880808] border border-red-100/60 shadow-sm relative shrink-0">
@@ -192,7 +190,7 @@ const Notifications = () => {
         )}
       </section>
 
-      {/* 🔴 ALERT ARCHITECTURE BLOCK CORES */}
+      {/* ALERT ARCHITECTURE BLOCK CORES */}
       <div className="w-full space-y-3 sm:space-y-4">
         {loading ? (
           <div className="p-12 text-center text-gray-400 font-semibold animate-pulse uppercase text-xs tracking-wider bg-white rounded-2xl border border-gray-200 shadow-sm">
@@ -226,7 +224,6 @@ const Notifications = () => {
 
                 <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2 md:gap-4 w-full pl-1 sm:pl-2">
                   <div className="flex items-start gap-3 sm:gap-4 min-w-0 flex-1">
-                    {/* Icon Base */}
                     <div className={`shrink-0 w-9 h-9 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center border transition-colors ${
                       notif.isUnread 
                         ? 'bg-emerald-50 text-emerald-600 border-emerald-200' 
@@ -265,7 +262,7 @@ const Notifications = () => {
                       </p>
                     </div>
                     
-                    {/* 🔴 Delete button */}
+                    {/* Delete button */}
                     <button 
                       onClick={(e) => deleteNotification(notif._id, e)}
                       className="p-1 sm:p-1.5 text-gray-300 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors md:opacity-0 group-hover:opacity-100 shrink-0 md:hidden block"
@@ -275,7 +272,7 @@ const Notifications = () => {
                     </button>
                   </div>
 
-                  {/* 🔴 Action Section (Contact / Button) */}
+                  {/* Action Section (Contact / Button) */}
                   <div className="w-full md:w-auto shrink-0 pt-1.5 md:pt-0 border-t md:border-none border-gray-100 flex flex-row md:flex-col items-center md:items-end justify-between md:justify-end gap-2 sm:gap-3">
                     
                     {isAccepted ? (
@@ -316,7 +313,6 @@ const Notifications = () => {
                   </div>
                 </div>
 
-                {/* 🔴 Appointment Box - Flex-row to save height */}
                 {notif.appointmentDate && (
                   <div className={`p-2 sm:p-3.5 border rounded-lg sm:rounded-xl flex flex-row flex-wrap justify-between items-center gap-2 w-full ml-1 sm:mx-0 sm:ml-2 ${
                     notif.isUnread 

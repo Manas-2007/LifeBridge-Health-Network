@@ -29,7 +29,6 @@ const HowItWorks = () => {
                   {step.num}
                 </span>
                 
-                {/* Responsive Image Container */}
                 <div className="h-28 w-28 sm:h-32 sm:w-32 md:h-40 md:w-40 flex items-center justify-center mb-4 sm:mb-6 overflow-hidden transition-transform duration-300 hover:scale-105">
                   <img src={step.img} alt={step.title} className="w-full h-full object-contain" />
                 </div>
@@ -42,14 +41,11 @@ const HowItWorks = () => {
                 </p>
               </div>
 
-              {/* Responsive Arrows */}
               {index !== steps.length - 1 && (
                 <>
-                  {/* Desktop Right Arrow */}
                   <div className="hidden md:block text-red-200">
                     <ArrowRight size={28} className="lg:w-8 lg:h-8" />
                   </div>
-                  {/* Mobile Down Arrow */}
                   <div className="block md:hidden text-red-200 my-1">
                     <ArrowDown size={24} />
                   </div>

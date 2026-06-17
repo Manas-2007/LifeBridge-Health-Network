@@ -68,14 +68,12 @@ const Notifications = () => {
     }
   };
 
-  // ================= ✨ ACTION HANDLERS =================
 
-  // 🟢 1. ACCEPT LOGIC
+  // ACCEPT LOGIC
   const handleAcceptRequest = async (req) => {
     if (window.confirm("Confirm accepting this emergency request?")) {
       setActionLoading(req._id);
       try {
-        // STEP 1: Fetch Real Donor Info
         let exactPhone = donor?.phone || donor?.mobile || "Not Provided";
         let exactAddress = donor?.address || donor?.location || donor?.city || "Location Not Provided";
 
@@ -90,7 +88,6 @@ const Notifications = () => {
           console.warn("Could not fetch real donor info, using fallback.");
         }
 
-        // STEP 2: Update the Blood Request (Main Action)
         await axios.put(`https://lifedrop-backend-orz5.onrender.com/api/blood-requests/${req._id}/accept`, {
           donorId: donorId,
           donorName: donorName,
@@ -98,7 +95,6 @@ const Notifications = () => {
           donorAddress: exactAddress
         });
 
-        // STEP 3: Send Notification (ISOLATED - Iska error flow ko nahi rokega)
         try {
           await axios.post('https://lifedrop-backend-orz5.onrender.com/api/notifications', {
             userId: req.name, 
@@ -117,7 +113,6 @@ const Notifications = () => {
           console.warn("Notification error (Ignored because request was accepted successfully):", notifErr);
         }
         
-        // STEP 4: Force UI to turn GREEN!
         setCardStatus(prev => ({ ...prev, [req._id]: 'accepted' }));
         
       } catch (error) {
@@ -129,7 +124,6 @@ const Notifications = () => {
     }
   };
 
-  // 🔴 2. DECLINE LOGIC 
   const handleRejectRequest = async (reqId) => {
     if (window.confirm("Are you sure you want to DECLINE this request?")) {
       setActionLoading(reqId);
@@ -169,10 +163,8 @@ const Notifications = () => {
   const unreadCount = notifications.filter(n => !n.isRead).length + directRequests.length;
 
   return (
-    // 🔴 Added global margin top fix
     <div className="bg-transparent pb-14 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">
       
-      {/* 🔴 HEADER MANAGEMENT BAR */}
       <section className="w-full flex flex-row items-center justify-between gap-4 mb-4 sm:mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-gray-300 shadow-sm mt-2 sm:mt-4">
         <div className="flex items-center gap-3">
           <div className="p-2 sm:p-2.5 bg-red-50 rounded-xl text-[#880808] border border-red-100/60 shadow-sm relative shrink-0">
@@ -203,7 +195,6 @@ const Notifications = () => {
         )}
       </section>
 
-      {/* 🔴 ALERT FEED LIST BLOCK */}
       <div className="w-full space-y-3 sm:space-y-4">
         {loading ? (
           <div className="bg-white p-12 sm:p-16 rounded-2xl border border-gray-100 text-center shadow-sm">
@@ -218,13 +209,10 @@ const Notifications = () => {
           </div>
         ) : (
           <>
-            {/* 🔴 DIRECT REQUESTS CARDS */}
             {directRequests.map((req) => {
               
-              // 🔴 Check local UI status
               const status = cardStatus[req._id];
 
-              // STATE 1: DECLINED UI
               if (status === 'declined') {
                 return (
                   <div key={req._id} className="relative flex flex-col p-3.5 sm:p-5 rounded-2xl border border-gray-200 bg-gray-50/50 shadow-sm transition-all duration-300">
@@ -236,7 +224,6 @@ const Notifications = () => {
                 );
               }
 
-              // STATE 2: ACCEPTED UI
               if (status === 'accepted') {
                 return (
                   <div key={req._id} className="relative flex flex-col p-3.5 sm:p-5 rounded-2xl border border-emerald-200 bg-emerald-50 shadow-sm transition-all duration-300">
@@ -249,7 +236,6 @@ const Notifications = () => {
                 );
               }
 
-              // STATE 3: NORMAL PENDING UI 
               return (
                 <div key={req._id} className="relative flex flex-col p-3 sm:p-5 rounded-2xl border-2 border-red-200 bg-red-50/30 shadow-md transition-all duration-300 hover:shadow-lg">
                   <div className="flex justify-between items-start mb-2 sm:mb-3">
@@ -307,12 +293,10 @@ const Notifications = () => {
               );
             })}
 
-            {/* 🔴 NORMAL NOTIFICATIONS  */}
             {notifications.map((notif) => (
               <div 
                 key={notif._id} 
                 onClick={() => navigate('/donor-history')}
-                // 🔴 Compact padding applied to normal notification items
                 className={`group relative flex flex-col gap-2.5 sm:gap-4 p-3 sm:p-5 rounded-2xl border bg-white transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer ${
                   !notif.isRead ? 'border-emerald-500/30 bg-emerald-50/5 ring-1 ring-emerald-500/10' : 'border-gray-100'
                 }`}
@@ -321,7 +305,6 @@ const Notifications = () => {
                 <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-2 md:gap-4 w-full pl-1 sm:pl-2">
                   <div className="flex items-start gap-3 sm:gap-4 min-w-0 flex-1">
                     
-                    {/* Compact Icon */}
                     <div className={`shrink-0 w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center border transition-colors ${!notif.isRead ? 'bg-emerald-50 text-emerald-600 border-emerald-200' : 'bg-gray-50 text-gray-500 border-gray-200/60'}`}>
                       <IoHeartSharp className="text-base sm:text-xl text-red-600" />
                     </div>
@@ -345,7 +328,6 @@ const Notifications = () => {
                     </div>
                   </div>
 
-                  {/* Compact Time/Delete */}
                   <div className="w-full md:w-auto shrink-0 pt-1.5 md:pt-0 border-t md:border-none border-gray-100 flex items-center justify-between md:justify-end gap-3 sm:gap-4">
                     <span className="text-[8px] sm:text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
                       {new Date(notif.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -361,7 +343,6 @@ const Notifications = () => {
         )}
       </div>
 
-      {/* 🔴 CALL TO ACTION */}
       <div className="bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-800 rounded-2xl p-5 sm:p-6 md:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 shadow-md mt-6">
         <div className="text-center md:text-left">
           <h4 className="text-[15px] sm:text-lg font-semibold tracking-wide mb-0.5 uppercase">Impact Records</h4>

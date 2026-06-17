@@ -4,9 +4,7 @@ import { IoSearchSharp } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineNotificationsActive } from "react-icons/md";
 
-// 🔴 ADDED 'onOpenLogin' prop to trigger the modal from Navbar
 const StatusNavbar = ({ setIsOpen, user, onOpenLogin }) => {
-  // Logic to check if user is actually authenticated
   const isLoggedIn = !!user?.name;
   const firstName = isLoggedIn ? user.name.split(' ')[0] : "Guest";
 
@@ -14,7 +12,6 @@ const StatusNavbar = ({ setIsOpen, user, onOpenLogin }) => {
     <header className="w-full bg-white border-b border-gray-100 shadow-sm px-5 md:px-8 lg:px-12 py-3 md:py-4 sticky top-0 z-20 select-none">
       <div className="w-full max-w-[1700px] mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-0">
       
-      {/* 🔴 TOP BAR CONTAINER */}
       <div className="flex items-center justify-between min-w-0 w-full md:w-auto">
         
         {/* LEFT COMPONENT: BRANDING & GREETING */}
@@ -75,7 +72,7 @@ const StatusNavbar = ({ setIsOpen, user, onOpenLogin }) => {
         </div>
       </div>
 
-      {/* 🔴 CONTROL STRIP CONTAINER */}
+      {/*  CONTROL STRIP CONTAINER */}
       <div className="flex items-center justify-between md:justify-end gap-4 md:gap-6 lg:gap-8 w-full md:w-auto">
         
             <div className="hidden md:flex relative items-center w-full md:w-[260px] lg:w-[300px] group">          <span className="absolute left-3.5 text-gray-500 pointer-events-none">

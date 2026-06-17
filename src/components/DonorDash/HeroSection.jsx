@@ -12,12 +12,11 @@ const HeroSection = ({
   const infoDataBadgeStyle = "text-amber-700 font-bold bg-amber-50/60 px-1.5 py-0.5 rounded border border-amber-200/30";
 
   return (
-    // 🔴 COMPACT FIX: Reduced outer padding (p-4 md:p-6) and gaps to shrink height
     <div className="w-full bg-white rounded-2xl p-4 sm:p-5 md:p-6 lg:px-8 lg:py-6 border border-gray-300/80 shadow-md flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-6 mt-4 md:mt-0 lg:mt-2">
       
       <div className="flex flex-col md:flex-row items-center gap-4 md:gap-5 w-full lg:w-auto">
         
-        {/* 🔴 1. DYNAMIC BLOOD GROUP SPHERE CASE (Shrunk size for compactness) */}
+        {/*  1. DYNAMIC BLOOD GROUP SPHERE CASE */}
         <div className="relative group shrink-0">
           <div className="absolute inset-0 bg-[#880808] rounded-full blur-[20px] opacity-10 group-hover:opacity-25 transition-opacity duration-300"></div>
           <div className="relative w-[75px] h-[75px] md:w-[90px] md:h-[90px] bg-gradient-to-br from-red-600 to-[#880808] rounded-full flex flex-col items-center justify-center shadow-[inset_-6px_-6px_12px_rgba(0,0,0,0.25),4px_4px_10px_rgba(136,8,8,0.25)]">
@@ -30,14 +29,13 @@ const HeroSection = ({
           </div>
         </div>
 
-        {/* 🔴 2. DYNAMIC DONOR META PROFILE DETAILS */}
+        {/* 2. DYNAMIC DONOR META PROFILE DETAILS */}
         <div className="text-center md:text-left flex-1 w-full min-w-0">
           <p className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Donor Registry Profile</p>
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 tracking-wide leading-tight mb-2">
             Welcome Back <span className={nameHighlightStyle}>{donor.name}</span>
           </h2>
           
-          {/* Metadata Parameters Badges Row */}
           <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 md:gap-3 text-[11px] md:text-xs text-gray-500 font-medium">
             <span className="flex items-center gap-1">
               <MdOutlineLocationOn className="text-[#880808] text-[14px] md:text-base" /> 
@@ -54,7 +52,7 @@ const HeroSection = ({
             </span>
           </div>
 
-          {/* 🔴 3. DYNAMIC ELIGIBILITY TRACKING TIMELINE (MANUAL SLIDER) */}
+          {/* 3. DYNAMIC ELIGIBILITY TRACKING TIMELINE (MANUAL SLIDER) */}
           <div className="mt-3 w-full max-w-[380px] mx-auto md:mx-0">
             <div className="flex justify-between items-baseline mb-1">
               <p className="text-[10px] sm:text-[11px] font-bold text-gray-700">Set Next Eligibility</p>
@@ -63,7 +61,6 @@ const HeroSection = ({
               </p>
             </div>
             
-            {/* 🔴 BULLETPROOF INTERACTIVE RANGE SLIDER */}
             <div className="relative w-full py-1.5 flex items-center group z-10">
               <input 
                 type="range" 
@@ -85,12 +82,11 @@ const HeroSection = ({
         </div>
       </div>
 
-      {/* 🔴 4. SYSTEM AVAILABILITY ENGINE TOGGLE COMPONENT */}
+      {/*  4. SYSTEM AVAILABILITY ENGINE TOGGLE COMPONENT */}
       <div className="w-full lg:w-[220px] bg-gray-50/50 p-3 sm:p-4 rounded-xl border border-gray-400/60 shadow-inner shrink-0">
         <div className="flex justify-between items-center mb-2">
           <p className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider">Availability</p>
           
-          {/* Custom Track Toggle Switch Action Button */}
           <button 
             onClick={onToggle}
             className={`w-[36px] h-[20px] md:w-[42px] md:h-[22px] rounded-full relative cursor-pointer transition-colors duration-300 p-0.5 border border-transparent outline-none flex items-center ${
@@ -108,7 +104,6 @@ const HeroSection = ({
           {donor.isAvailable ? "Available to Donate" : "Currently on Break"}
         </h4>
         
-        {/* Dynamic Status Notification Wrapper Badge */}
         <div className={`flex items-center justify-center lg:justify-start gap-1.5 md:gap-2 text-[9px] md:text-[10px] font-bold p-2 md:p-2.5 rounded-lg border transition-all duration-300 text-left ${
           donor.isAvailable 
             ? 'text-emerald-700 bg-emerald-50/60 border-emerald-200/50' 

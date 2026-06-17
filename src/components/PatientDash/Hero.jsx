@@ -60,7 +60,6 @@ const StatCard = ({ title, value, unit, description, icon, type }) => (
       </p>
     </div>
     
-    {/* Bottom Precision Accent Line */}
     <div className={`absolute bottom-0 left-0 right-0 h-[2.5px] ${
       type === "burgundy" ? "bg-[#880808]" : 
       type === "emerald" ? "bg-emerald-500" : 
@@ -70,7 +69,6 @@ const StatCard = ({ title, value, unit, description, icon, type }) => (
   </div>
 );
 
-// 🔴 PREMIUM FOOTER INTEGRATION: CLINICAL PATIENT HISTORY & WORKFLOW MATRIX
 const FooterSection = ({ historyData }) => {
   const navigate = useNavigate();
   const steps = [
@@ -84,7 +82,7 @@ const FooterSection = ({ historyData }) => {
   return (
     <div className="flex flex-col lg:flex-row items-start gap-5 mt-6 pb-6 w-full select-none text-left">
       
-      {/* 🏥 LEFT COLUMN: BROADCAST HISTORY TRACK */}
+      {/*  LEFT COLUMN */}
       <div className="w-full lg:flex-[2] bg-white rounded-2xl p-5 sm:p-6 border border-gray-400/80 shadow-lg">
         <div className="flex justify-between items-center mb-6">
           <div className="flex flex-col">
@@ -106,7 +104,6 @@ const FooterSection = ({ historyData }) => {
           {historyData && historyData.length > 0 ? (
             historyData.map((item, idx) => (
               <div key={item._id || idx} className="relative pl-7 sm:pl-9 flex flex-col xs:flex-row xs:items-center justify-between gap-2 group bg-transparent">
-                {/* Custom Medical Node Pointer */}
                 <div className="absolute left-0 top-1.5 xs:top-1/2 xs:-translate-y-1/2 w-3 h-3 bg-white border-2 border-[#880808] rounded-full z-10 transition-transform group-hover:scale-110" />
                 
                 <div className="min-w-0 flex-1 text-left">
@@ -139,7 +136,7 @@ const FooterSection = ({ historyData }) => {
         </div>
       </div>
 
-      {/* RIGHT COLUMN: PROCESS OPERATION STEPPER MAP */}
+      {/* RIGHT COLUMN */}
       <div className="w-full lg:flex-1 bg-gradient-to-b from-red-50/20 via-white to-transparent rounded-2xl p-5 sm:p-6 border border-red-300 shadow-[0_10px_30px_-15px_rgba(136,8,8,0.04)] h-auto self-stretch flex flex-col justify-between relative overflow-hidden transition-all duration-300 hover:shadow-[0_15px_40px_-10px_rgba(136,8,8,0.08)] hover:border-red-600">
         
         <div className="absolute -right-12 -top-12 w-32 h-32 bg-red-500/30 rounded-full blur-2xl pointer-events-none" />
@@ -189,7 +186,7 @@ const Hero = () => {
   const [history, setHistory] = useState([]); 
   const [selectedDonor, setSelectedDonor] = useState(null);
   const [activeRequestName, setActiveRequestName] = useState("");
-  const [loading, setLoading] = useState(true); // Loading state add ki
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const [showNoDonorMsg, setShowNoDonorMsg] = useState(false);
   const [selectedReq, setSelectedReq] = useState(null);
@@ -201,8 +198,8 @@ const Hero = () => {
     pending: 0
   }); 
 
-  // 📦 METRICS SCHEMATICS GRID STYLING ARRAYS
-  const formatNum = (num) => num.toString().padStart(2, '0'); // To show "05" instead of "5"
+  // METRICS SCHEMATICS GRID STYLING ARRAYS
+  const formatNum = (num) => num.toString().padStart(2, '0'); 
 
   const patientStats = [
     { title: "Active Broadcasts", value: formatNum(metrics.active), unit: "Tracks", description: "Live Network Feeds", icon: <MdOutlineNotificationsActive />, type: "burgundy" },
@@ -211,7 +208,7 @@ const Hero = () => {
     { title: "Pending Reviews", value: formatNum(metrics.pending), unit: "Alert", description: "Requires Action", icon: <MdOutlineWarningAmber />, type: "amber" },
   ];
 
-  // 📦 MOCK REGISTRY DATABASE: Synced Mapping Keys
+  // MOCK REGISTRY DATABASE
   const donorDatabaseFallback = {
     "req_a01": { name: "Dr. Vikram Malhotra", phone: "+91 94250 11223" },
     "req_a02": { name: "Priya Chandrasekhar", phone: "+91 98930 44556" },
@@ -220,7 +217,7 @@ const Hero = () => {
     "req_a05": { name: "Manish Patidar", phone: "+91 75520 77889" }
   };
 
-  // ================= 🔄 FETCH LIVE DASHBOARD DATA & CALCULATE METRICS =================
+  // =================FETCH LIVE DASHBOARD DATA & CALCULATE METRICS =================
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
@@ -231,30 +228,26 @@ const Hero = () => {
       else if (response.data?.data) rawData = response.data.data;
       else if (response.data?.requests) rawData = response.data.requests;
 
-      // 🧮 COUNTER CALCULATION ENGINE
+      // COUNTER CALCULATION ENGINE
       let activeCount = 0;
       let fulfilledCount = 0;
       let totalVolume = 0;
       let pendingCount = 0;
 
       rawData.forEach(req => {
-        // 1. Total Volume (Sum of all units)
         totalVolume += parseInt(req.units) || 0;
 
-        // 2. Active vs Fulfilled
         if (req.status === 'Completed') {
           fulfilledCount++;
         } else {
           activeCount++;
         }
 
-        // 3. Pending Reviews (Accepted but not completed)
         if (req.status === 'Accepted') {
           pendingCount++;
         }
       });
 
-      // Update Metrics State
       setMetrics({
         active: activeCount,
         fulfilled: fulfilledCount,
@@ -262,7 +255,6 @@ const Hero = () => {
         pending: pendingCount
       });
 
-      // 🔴 BINA KISI DOCTOR FILTER KE: Sirf active aur completed alag karo (Top 5 for tables)
       const activeMyRequests = rawData.filter(req => req.status !== 'Completed');
       const completedHistory = rawData.filter(req => req.status === 'Completed');
 
@@ -295,7 +287,6 @@ const Hero = () => {
 
   return (
 <div className="animate-[fadeIn_0.4s_ease-out] space-y-5 pb-10 w-full mx-auto max-w-[1700px] select-none ">      
-      {/* 🔴 1. MOBILE ONLY IMPACT BANNER (Hidden on Desktop screens via md:hidden) */}
       <section className="relative overflow-hidden bg-white rounded-2xl p-5 sm:p-6 border border-gray-200/80 shadow-md text-left md:hidden mt-2">
         <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-red-500/10 via-transparent to-transparent rounded-bl-full pointer-events-none" />
         <div className="relative z-10 flex flex-col gap-4">
@@ -327,15 +318,13 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* 🔴 2. THEMATIC STATS DATA GRID MATRIX */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-2 md:mt-4">
         {patientStats.map((stat, index) => <StatCard key={index} {...stat} />)}
       </div>
 
-      {/* 🔴 3. MAIN CONTENT PIPELINE COLUMNS */}
       <div className="flex flex-col xl:flex-row gap-5 items-start w-full mt-6">
         
-        {/* LEFT COMPONENT BLOCK: Requests Table Vector */}
+        {/* LEFT COMPONENT BLOCK */}
         <div className="w-full xl:flex-[2] bg-white rounded-2xl p-5 sm:p-6 border border-gray-400/80 shadow-md overflow-hidden text-left">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <div>
@@ -372,26 +361,21 @@ const Hero = () => {
         key={req._id} 
                 onClick={async () => {
           try {
-            // 1. Live backend se donors uthao
             const response = await axios.get('https://lifedrop-backend-orz5.onrender.com/api/donors/all');
             const allDonors = response.data.data || response.data.donors || response.data || [];
 
-            // 2. ROBUST MATCHING LOGIC (Spaces aur Case ignore karega)
             const targetBlood = (req.bloodGroup || "").toString().toUpperCase().trim();
             
             const foundDonors = allDonors.filter(d => {
-              // Note: Agar tumhare DB mein field ka naam bloodType hai toh yahan d.bloodType likhna
               const donorBlood = (d.bloodGroup || d.bloodType || "").toString().toUpperCase().trim();
               return donorBlood === targetBlood;
             });
 
             if (foundDonors.length > 0) {
-              // 🟢 MATCH FOUND: Max 2 donors uthao
               setMatchedDonors(foundDonors.slice(0, 2)); 
               setSelectedReq(req);
-              setShowNoDonorMsg(false); // Error message OFF
+              setShowNoDonorMsg(false); 
             } else {
-              // 🔴 NO MATCH
               setMatchedDonors([]);
               setSelectedReq(null);
               setShowNoDonorMsg(true); 
@@ -407,7 +391,6 @@ const Hero = () => {
             setTimeout(() => setShowNoDonorMsg(false), 2000);
           }
         }}
-        // 👆 NAYA LOGIC KHATAM 👆
 
         className="group hover:bg-red-50/20 cursor-pointer transition-colors bg-transparent"
       >
@@ -426,12 +409,12 @@ const Hero = () => {
         <td className="py-4 text-right">
           <span className={`px-2.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider border ${
             req.status === 'Accepted' || req.status === 'Completed'
-              ? 'bg-emerald-50 border-emerald-100 text-emerald-700' // MATCHED
+              ? 'bg-emerald-50 border-emerald-100 text-emerald-700'
               : req.urgency === 'Critical'
-                ? 'bg-red-50 border-red-100 text-red-600 animate-pulse' // CRITICAL
+                ? 'bg-red-50 border-red-100 text-red-600 animate-pulse'
                 : req.urgency === 'Urgent'
-                  ? 'bg-amber-50 border-amber-100 text-amber-600' // URGENT
-                  : 'bg-blue-50 border-blue-100 text-blue-600' // NORMAL
+                  ? 'bg-amber-50 border-amber-100 text-amber-600' 
+                  : 'bg-blue-50 border-blue-100 text-blue-600' 
           }`}>
             {req.status === 'Accepted' ? 'MATCHED ✓' : req.urgency}
           </span>
@@ -450,7 +433,7 @@ const Hero = () => {
           </div>
         </div>
 
-       {/* RIGHT COMPONENT BLOCK: Smart Donor Match Radar */}
+       {/* RIGHT COMPONENT BLOCK:  Donor Match Radar */}
         <div className="w-full xl:flex-1 bg-white rounded-2xl p-5 sm:p-6 border border-gray-400/80 shadow-md text-left sticky top-4 self-start">
           <div className="flex justify-between items-center mb-5">
             <div>
@@ -465,7 +448,6 @@ const Hero = () => {
           </div>
 
           {selectedReq && matchedDonors.length > 0 ? (
-            /* 1️⃣ STATE: MATCH FOUND -> SHOW UP TO 2 DONOR CARDS */
             <div className="space-y-3 animate-[fadeIn_0.3s_ease]">
               <div className="mb-3 px-2 border-l-4 border-[#880808] bg-gray-50/50 py-1.5 rounded-r-lg">
                 <h4 className="text-xs font-bold text-gray-800 tracking-wide">Target Patient: {selectedReq.name}</h4>
@@ -489,7 +471,7 @@ const Hero = () => {
                     <span className="text-[8px] font-bold text-emerald-600 uppercase tracking-wider mt-0.5 px-1.5 py-0.5 rounded border bg-emerald-50 border-emerald-200 shadow-sm">Match ✓</span>
                   </div>
 
-                  {/* 🟢 THE ACTION BUTTONS (Accept & Reject) */}
+                  {/*  THE ACTION BUTTONS (Accept & Reject) */}
                   <div className="flex gap-2 w-full mt-1">
                     <button 
                       onClick={() => navigate('/pool')} 
@@ -509,7 +491,6 @@ const Hero = () => {
             </div>
 
           ) : showNoDonorMsg ? (
-            /* 2️⃣ STATE: NO MATCH FOUND MESSAGE (2 Second Timer) */
             <div className="py-16 px-4 text-center border border-dashed border-gray-300 rounded-xl bg-gray-50 flex flex-col items-center justify-center min-h-[340px] animate-[fadeIn_0.2s_ease-in-out]">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm border border-gray-200">
                 <span className="text-xl">🔍</span>
@@ -521,7 +502,6 @@ const Hero = () => {
             </div>
 
           ) : (
-            /* 3️⃣ STATE: DEFAULT BLOOD DROP ANIMATION */
             <div className="py-16 px-4 text-center border border-dashed border-red-200/60 rounded-xl bg-gradient-to-b from-white to-red-50/30 flex flex-col items-center justify-center min-h-[340px] relative overflow-hidden">
               <div className="relative flex justify-center items-center w-32 h-32 mb-6">
                 <div className="absolute w-24 h-24 bg-red-500/10 rounded-full animate-[ping_2.5s_ease-in-out_infinite]" />
@@ -542,7 +522,6 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 🔴 FOOTER INTEGRATION HUB: Requests History & Stepper Blueprint Layout */}
       <FooterSection historyData={history}/>
 
     </div>

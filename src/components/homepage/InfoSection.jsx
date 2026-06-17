@@ -1,7 +1,6 @@
 import React from 'react';
 import { Droplets, Users, ShieldCheck, HeartPulse, Hospital } from 'lucide-react';
 
-/* ── Reusable Circle Wrapper ── */
 const IconCircle = ({ children }) => {
   return (
     <div
@@ -12,7 +11,7 @@ const IconCircle = ({ children }) => {
       "
       style={{
         background: 'linear-gradient(145deg, #f1ebeb, #fff)',
-        border: '1.5px solid rgba(220, 38, 38, 0.5)', /* Softer red border for premium look */
+        border: '1.5px solid rgba(220, 38, 38, 0.5)', 
         boxShadow: '0 4px 14px 0 rgba(192,0,26,0.13), 0 1px 3px rgba(192,0,26,0.08)',
       }}
     >
@@ -69,7 +68,6 @@ const InfoSection = () => {
 
   return (
     <section className="py-8 sm:py-10 px-6 lg:px-16 bg-[#fafafa]">
-      {/* Container: 95% width on mobile, max 1200px on large screens */}
 <div className="w-full max-w-[1500px] mx-auto bg-white rounded-[20px] sm:rounded-[24px] p-5 sm:p-8 md:p-10 shadow-[0_6px_32px_0_rgba(0,0,0,0.07)] border border-red-100">        
         <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 w-full">
           

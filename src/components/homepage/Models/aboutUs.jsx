@@ -20,12 +20,12 @@ const AboutUs = ({ isOpen, onClose }) => {
 
     if (isOpen) {
       window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden"; // Scroll Lock
+      document.body.style.overflow = "hidden"; 
     }
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset"; // Cleanup
+      document.body.style.overflow = "unset"; 
     };
 
   }, [isOpen, onClose]);

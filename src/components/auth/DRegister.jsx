@@ -68,14 +68,13 @@ const DRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
       if (response.data.success) {
         const userData = response.data.user;
 
-        // Secure tokens and metrics globally into standard cache logs
         localStorage.setItem('token', 'active-verified-session-token-2026');
         localStorage.setItem('user', JSON.stringify({
           _id: userData._id,
           name: userData.name,
           email: userData.email,
           bloodGroup: userData.bloodGroup,
-          location: userData.address, // City data node maps
+          location: userData.address, 
           phone: userData.phone,
           role: 'donor'
         }));
@@ -96,7 +95,6 @@ const DRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 py-4 sm:p-6 font-sans select-none animate-[fadeIn_.2s_ease]"> 
       
-      {/* 🔴 PREMIUM LIGHT BLUR BACKDROP */}
       <div 
         onClick={onClose} 
         className="absolute inset-0 bg-black/20 backdrop-blur-md"
@@ -105,7 +103,7 @@ const DRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
       {/* MODAL CARD */}
       <div className="relative z-10 w-full max-w-[900px] h-auto max-h-[85vh] sm:max-h-[90vh] md:h-[85vh] bg-white rounded-[20px] shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col md:flex-row">
 
-        {/* CLOSE BUTTON (FIXED OVERLAP & STYLING) */}
+        {/* CLOSE BUTTON  */}
         <button
           onClick={onClose}
           className="absolute top-3 right-3 md:top-4 md:right-4 z-50 flex h-8 w-8 items-center justify-center rounded-xl bg-gray-200/80 md:bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all cursor-pointer"
@@ -113,7 +111,7 @@ const DRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
           ✕
         </button>
 
-        {/* Left Side: Premium Branding (Desktop Only - UNTOUCHED) */}
+        {/* Left Side */}
         <div className="hidden md:flex md:w-[38%] bg-[#880808] p-12 flex-col justify-between text-white relative overflow-hidden shrink-0">
           <div className="absolute top-[-10%] right-[-10%] opacity-10 pointer-events-none">
             <Droplets size={300} strokeWidth={1} />
@@ -165,9 +163,9 @@ const DRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
         {/* RIGHT SIDE */}
         <div className="w-full md:w-[62%] flex flex-col bg-[#fafafa] h-full min-h-0">
 
-          {/* HEADER (FIXED: Matched Doctor's Light Theme) */}
+          {/* HEADER  */}
           <div className="pt-14 sm:pt-8 pb-3 px-5 md:px-8 shrink-0">
-            {/*  TOGGLE (PILL STYLE) */}
+            {/*  TOGGLE */}
             <div className="mb-5 sm:mb-6">
               <div className="flex bg-gray-200/60 rounded-full p-1 shadow-inner border border-gray-100">
                 <button
@@ -340,7 +338,7 @@ const DRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
                 )}
               </div>
 
-              {/* FOOTER (SHRINK-0 ensures it stays at bottom) */}
+              {/* FOOTER */}
               <div className="p-4 md:p-5 bg-white border-t border-gray-100 space-y-2 shrink-0">
                 <button
                   type="submit" disabled={loading}
@@ -348,7 +346,7 @@ const DRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
                 >
                   {loading ? (
                     <>
-                      {/* 🌀 CIRCULAR SPINNER SVG */}
+                      {/*  CIRCULAR SPINNER SVG */}
                       <svg className="animate-spin h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>

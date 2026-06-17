@@ -27,7 +27,7 @@ function App() {
       .catch(() => console.log('Backend waking up call sent... 🔥'));
   }, []);
 
-  // --- 🔄 REFRESH HANDLER ---
+  //REFRESH HANDLER
   useEffect(() => {
     const token = localStorage.getItem('token');
     const savedDonor = localStorage.getItem('user');
@@ -82,7 +82,7 @@ function App() {
       
       {!isLoggedIn ? (
         <>
-          {/* 🔴 NAVBAR: */}
+          {/* NAVBAR: */}
           <Navbar 
             onRegisterClick={() => setDonorMode("register")} 
             onPatientAuth={(mode) => setPatientMode(mode)} 
@@ -100,7 +100,7 @@ function App() {
 
           <Footer />
 
-          {/* 🔴 DONOR MODAL */}
+          {/* DONOR MODAL */}
           {donorMode && (
             <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
               <DRegister
@@ -112,7 +112,7 @@ function App() {
             </div>
           )}
 
-          {/* 🟣 PATIENT MODAL */}
+          {/* PATIENT MODAL */}
           {patientMode && (
             <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
               <PRegister

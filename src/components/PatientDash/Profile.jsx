@@ -2,18 +2,15 @@ import React from 'react';
 import { LuUser, LuMail, LuPhone, LuMapPin, LuDroplets, LuShieldAlert, LuPencil, LuActivity, LuCalendarCheck } from "react-icons/lu";
 
 const Profile = ({ user }) => {
-  // 🔴 SMART DOCTOR IDENTITY LOGIC (Synced with Navbar)
   const validName = user?.name || user?.patientName || "Doctor";
   const displayName = validName.toLowerCase().startsWith('dr') ? validName : `Dr. ${validName}`;
   const initial = validName === "Doctor" ? "D" : validName.charAt(0).toUpperCase();
 
-  // 🔴 HYBRID DATA MAPPING
   const doctorData = {
     name: displayName,
     id: user?.patientId || "ID-UNASSIGNED",
     bloodGroup: user?.bloodGroup || "N/A",
     hospital: user?.hospital || "Registered Medical Center",
-    // Premium Dummy Data for missing fields
     email: "secure.staff@lifedrop.network", 
     phone: "Classified (Hospital Internal Ext.)", 
     emergencyContact: "Central Hospital Administration"
@@ -21,7 +18,7 @@ const Profile = ({ user }) => {
 
   return (
 <div className="bg-transparent pb-14 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] text-left">      
-      {/* 🔴 1. EXECUTIVE ZONE COMPONENT BRAND HEADER */}
+      {/* 1. EXECUTIVE ZONE COMPONENT BRAND HEADER */}
       <div className="flex items-center gap-3 mt-2 sm:mt-4 mb-6">
         <div className="bg-[#880808] p-2 rounded-xl text-white shadow-md shadow-red-900/20 shrink-0">
           <LuUser size={20} />
@@ -32,16 +29,14 @@ const Profile = ({ user }) => {
         </div>
       </div>
 
-      {/* 🔴 2. ASYMMETRIC METRICS LAYOUT ENGINE */}
+      {/*  2. ASYMMETRIC METRICS LAYOUT ENGINE */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
         
         {/* LEFT COLUMN PANEL: Identity Core Card */}
         <div className="bg-gradient-to-br from-white via-white to-red-50/20 p-6 sm:p-8 rounded-2xl border border-red-400 shadow-[0_10px_35px_-15px_rgba(136,8,8,0.06)] text-center relative overflow-hidden group/card hover:shadow-[0_15px_40px_-10px_rgba(136,8,8,0.1)] transition-all duration-300">
-          {/* Neon Border Line Top */}
           <div className="absolute top-0 inset-x-0 h-[3.5px] bg-gradient-to-r from-red-400 via-[#880808] to-red-600" />
           <div className="absolute -right-6 -top-6 w-24 h-24 bg-red-100/40 rounded-full blur-2xl pointer-events-none" />
 
-          {/* Premium Avatar Container */}
           <div className="relative w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-2xl mx-auto flex items-center justify-center text-white text-3xl font-extrabold shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] border-4 border-white mb-5 transition-all duration-300 group-hover/card:scale-105 group-hover/card:shadow-[#880808]/10 shrink-0">
             {initial}
             <span className="absolute bottom-[-6px] right-[-6px] bg-emerald-500 text-white text-[9px] w-5 h-5 rounded-full flex items-center justify-center ring-4 ring-white font-black shrink-0 shadow-md shadow-emerald-900/20 z-20">

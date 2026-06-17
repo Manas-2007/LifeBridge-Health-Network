@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios'; // 🔴 NAYA: Axios import kiya API call ke liye
+import axios from 'axios'; 
 import Sidebar from './Sidebar';
 import StatusNavbar from './StatusNavbar'; 
 import FooterSection from './Footer'; 
@@ -23,7 +23,7 @@ const Dashboard = ({ setIsLoggedIn, setUser: setGlobalUser }) => {
     }
   }, [navigate]);
 
-  //  🔄 AUTH PERSISTENCE & REAL API DATA FETCHING FLOW
+  //   AUTH PERSISTENCE & REAL API DATA FETCHING FLOW
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -54,18 +54,16 @@ const Dashboard = ({ setIsLoggedIn, setUser: setGlobalUser }) => {
           
           const currentDonorName = parsedUser.name || parsedUser.username;
           
-          // Sirf is donor ki 'Completed' requests filter karo
           const completedRequests = data.filter(
             req => req.status === 'Completed' && req.donorName === currentDonorName
           );
           
           const realDonations = completedRequests.length;
 
-          // State update karo naye real numbers ke sath
           setDonorData(prev => ({
             ...prev,
             donations: realDonations,
-            livesSaved: realDonations * 3, // 🧠 1 Donation = 3 Lives Saved
+            livesSaved: realDonations * 3, 
             streak: realDonations > 2 ? "On Fire 🔥" : (realDonations > 0 ? "Active" : "New")
           }));
         } catch (error) {
@@ -73,7 +71,7 @@ const Dashboard = ({ setIsLoggedIn, setUser: setGlobalUser }) => {
         }
       };
 
-      fetchRealStats(); // Call maro
+      fetchRealStats(); 
       
     } else {
       setIsLoggedIn(false);
@@ -120,7 +118,7 @@ const Dashboard = ({ setIsLoggedIn, setUser: setGlobalUser }) => {
     });
   };
 
-  // 3. ⏳ LOADING SHIMMER
+  // 3.  LOADING SHIMMER
   if (!donorData) return (
     <div className="h-screen w-full flex items-center justify-center bg-white select-none">
        <div className="flex flex-col items-center gap-4">
@@ -153,7 +151,7 @@ const Dashboard = ({ setIsLoggedIn, setUser: setGlobalUser }) => {
                   onToggle={toggleAvailability} 
                   onDaysChange={handleDaysChange} 
                 />
-                {/* ================= 📊 DYNAMIC COUNTERS GRID SECTION ================= */}
+                {/* =================  DYNAMIC COUNTERS GRID SECTION ================= */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   {[
                     { label: "Total Donations", val: donorData.donations, unit: "Lifetime", type: "burgundy" },
@@ -202,12 +200,11 @@ const Dashboard = ({ setIsLoggedIn, setUser: setGlobalUser }) => {
               </div>
             } />
             
-            {/* Sub-Route For Sidebar Handshake */}
             <Route path="dashboard" element={
               <div className="space-y-6 mt-2">
                 <HeroSection donor={donorData} onToggle={toggleAvailability} onDaysChange={handleDaysChange} />
                 
-                {/* ================= 📊 DYNAMIC COUNTERS GRID SECTION ================= */}
+                {/* =================  DYNAMIC COUNTERS GRID SECTION ================= */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   {[
                     { label: "Total Donations", val: donorData.donations, unit: "Lifetime", type: "burgundy" },

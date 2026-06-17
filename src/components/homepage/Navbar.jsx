@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, User, Droplets, Users, Heart } from 'lucide-react'; 
 
-// 🔴 THEMATIC POP-UP MODALS GATEWAY LINKS
 import AboutUs from './Models/aboutUs';
 import Contact from './Models/contact';
 import Eligibility from './Models/eligibility';
@@ -82,7 +81,6 @@ const Navbar = ({ onPatientAuth, onRegisterClick }) => {
               })}
             </div>
 
-            {/* PERFECTLY ALIGNED INTERACTIVE DROPDOWN AUTH BUTTON */}
             <div className="hidden md:flex relative items-center">
               <button 
                 onClick={() => setShowAuthDropdown(!showAuthDropdown)}

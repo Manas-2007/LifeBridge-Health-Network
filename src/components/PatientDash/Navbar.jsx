@@ -6,7 +6,6 @@ import { IoCallOutline, IoCheckmarkCircleOutline } from "react-icons/io5";
 const Navbar = ({ setIsOpen, user }) => {
   const navigate = useNavigate(); 
   
-  // 🔴 DOCTOR IDENTITY LOGIC
   const rawFirstName = user?.name ? user.name.split(' ')[0] : "Guest";
   const displayName = rawFirstName.toLowerCase().startsWith('dr') ? rawFirstName : `Dr. ${rawFirstName}`;
   const initial = rawFirstName.charAt(0).toUpperCase();

@@ -14,13 +14,11 @@ const History = () => {
   const [selectedBloodGroup, setSelectedBloodGroup] = useState("All");
   const bloodGroups = ["All", "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
 
-  // ================= 🔄 FETCH REAL COMPLETED DATA FROM BACKEND =================
   useEffect(() => {
     const fetchHistoryLogs = async () => {
       try {
         const response = await axios.get('https://lifedrop-backend-orz5.onrender.com/api/blood-requests');
         
-        // Sirf 'Completed' status wali requests filter karo
         const completedRequests = response.data.filter(req => req.status === 'Completed');
         setHistoryData(completedRequests);
         setLoading(false);
@@ -33,7 +31,6 @@ const History = () => {
     fetchHistoryLogs();
   }, []);
 
-  // 🔴  COMBINED FILTER LOGIC (Search + Blood Group)
   const filteredHistory = historyData.filter((item) => {
     const searchLower = searchQuery.toLowerCase().trim();
     
@@ -49,7 +46,7 @@ const History = () => {
     return matchesSearch && matchesBloodGroup;
   });
 
-  // 🔴 EXPORT DATA TO CSV FUNCTION
+  //  EXPORT DATA TO CSV FUNCTION
   const handleExport = () => {
     if (filteredHistory.length === 0) {
       alert("No data available to export!");
@@ -153,7 +150,7 @@ const History = () => {
         </div>
       </section>
 
-      {/* 🔴 2. ARCHIVAL FEED LIST VIEW */}
+      {/* 2. ARCHIVAL FEED LIST VIEW */}
       <div className="w-full space-y-3">
         {loading ? (
           <div className="bg-white p-12 sm:p-16 rounded-2xl border border-gray-100 text-center shadow-sm">
@@ -169,7 +166,6 @@ const History = () => {
               key={item._id} 
               className="group bg-white p-3.5 sm:p-5 rounded-2xl border border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4 hover:border-red-100/60 transition-all shadow-sm hover:shadow-md relative overflow-hidden"
             >
-              {/* Left Side Static Accent Stripe Indicator */}
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500 rounded-l-2xl" />
 
               {/* 1. TOP SECTION: Identity Row */}
@@ -187,7 +183,6 @@ const History = () => {
                   <div className="flex items-center gap-2 mt-0.5 sm:mt-1">
                     <p className="text-[9px] sm:text-[10px] font-semibold text-gray-400 uppercase flex items-center gap-1 tracking-wider">
                       <MdOutlineAccessTime size={12} className="text-red-700 shrink-0" /> 
-                      {/* Using createdAt from DB */}
                       {new Date(item.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}
                     </p>
                     <span className="text-gray-200 text-[10px]">|</span>

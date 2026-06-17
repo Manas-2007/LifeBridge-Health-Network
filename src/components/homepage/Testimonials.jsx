@@ -34,9 +34,7 @@ const Testimonials = () => {
                 className="animate-float"
                 style={{ animationDelay: `${i * 0.7}s` }} 
               >
-                {/* FIX: flex flex-col justify-between lagaya hai 
-                  taaki text chota-bada hone par bhi saare cards barabar height ke rahein 
-                */}
+               
                 <div 
                   className="bg-white p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border border-red-100 shadow-[0_8px_30px_rgb(0,0,0,0.06)] ring-1 ring-gray-900/5 hover:bg-red-50/50 hover:shadow-[0_8px_30px_rgba(220,38,38,0.12)] transition-all duration-500 text-left group h-full flex flex-col justify-between"
                 >

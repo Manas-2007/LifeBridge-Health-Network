@@ -18,7 +18,7 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
     urgency: 'Normal'
   });
 
-  // ================= 🔄 1. FOOLPROOF FETCH LOGIC =================
+  // 1. FOOLPROOF FETCH LOGIC
   const fetchRequests = async () => {
     try {
       setLoading(true);
@@ -54,7 +54,7 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
     fetchRequests();
   }, []);
 
-  // ================= ⚡ 2. DOCTOR/ADMIN AWARE SUBMIT LOGIC =================
+  //2. DOCTOR/ADMIN AWARE SUBMIT LOGIC 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -103,7 +103,6 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
 
   return (
 <div className="bg-transparent pb-14 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] relative mt-4 md:mt-0 lg:mt-2">  
-      {/* 🔴 PORTAL EXECUTIVE BRANDING HERO BANNER */}
       <section className="relative overflow-hidden bg-white rounded-2xl p-5 sm:p-6 md:p-4 border border-gray-300 shadow-sm mb-5 sm:mb-6 text-left">
         <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 bg-red-50/40 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -128,10 +127,8 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
         </div>
       </section>
 
-      {/* 🔴 BROADCAST DATA FEED ARCHITECTURE */}
       <div className="w-full text-left">
         
-        {/* 📱 MOBILE VIEW: CARD BASED LAYOUT (Visible only on small screens) */}
         <div className="sm:hidden space-y-3">
           {loading ? (
             <div className="bg-white p-10 rounded-2xl border border-gray-200 text-center shadow-sm">
@@ -140,13 +137,11 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
           ) : requests.length > 0 ? (
             requests.map((req) => (
               <div key={req._id} className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 relative overflow-hidden flex flex-col gap-3">
-                {/* Accent line based on urgency */}
                 <div className={`absolute left-0 top-0 bottom-0 w-1 ${
                   req.urgency === 'Critical' ? 'bg-red-500' : 
                   req.urgency === 'Urgent' ? 'bg-amber-500' : 'bg-emerald-500'
                 }`} />
                 
-                {/* Top Row: Blood Group & Identity */}
                 <div className="flex items-start gap-3 pl-1">
                   <div className="w-12 h-12 rounded-xl bg-red-50 text-[#880808] border border-red-100 flex items-center justify-center font-bold text-sm shrink-0 shadow-inner">
                     {req.bloodGroup}
@@ -155,7 +150,6 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
                     <h3 className="font-bold text-gray-900 text-[13px] truncate">{req.name}</h3>
                     <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider mt-0.5">Token: #{req._id.slice(-4)}</p>
                   </div>
-                  {/* Status Badge */}
                   <div className="shrink-0">
                     <span className={`px-2 py-1 rounded text-[9px] font-bold uppercase border ${
                       req.status === 'Accepted' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-blue-50/50 text-blue-600 border-blue-100'
@@ -165,7 +159,6 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
                   </div>
                 </div>
 
-                {/* Info Grid */}
                 <div className="grid grid-cols-2 gap-2 pl-1 border-t border-gray-50 pt-2 mt-1">
                   <div>
                     <p className="text-[9px] text-gray-400 font-semibold uppercase tracking-wider mb-0.5">Units Needed</p>
@@ -193,7 +186,7 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
           )}
         </div>
 
-        {/* 💻 DESKTOP VIEW: PREMIUM TABLE MATRIX (Hidden on small screens) */}
+        {/*  DESKTOP VIEW */}
         <div className="hidden sm:block rounded-2xl border border-gray-300/80 shadow-md overflow-hidden bg-white">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse table-auto">
@@ -264,7 +257,6 @@ const BloodReq = ({ isPrivate, targetDonor, onClose }) => {
 
       </div>
 
-      {/* 🔴 MODAL WINDOW SYSTEM */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-4 select-none">
           <div className="absolute inset-0 bg-red-950/20 backdrop-blur-[4px]" onClick={() => setIsModalOpen(false)}></div>

@@ -13,7 +13,7 @@ import {
 
 const Contact = ({ isOpen, onClose }) => {
 
-  // 🟢 SINGLE USE-EFFECT (Escape Key + Scroll Lock)
+  //  SINGLE USE-EFFECT 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
@@ -21,17 +21,16 @@ const Contact = ({ isOpen, onClose }) => {
 
     if (isOpen) {
       window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden"; // Scroll Lock on
+      document.body.style.overflow = "hidden";
     }
 
     // Cleanup Function
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset"; // Scroll Lock off
+      document.body.style.overflow = "unset"; 
     };
   }, [isOpen, onClose]);
 
-  // 🟢 EARLY RETURN (Hooks ke baad)
   if (!isOpen) return null;
 
   const contactChannels = [
@@ -55,13 +54,13 @@ const Contact = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4 py-5 select-none animate-[fadeIn_0.2s_ease-out]">
 
-      {/* 🔴 BACKDROP SMOOTH GLASS */}
+      {/*  BACKDROP SMOOTH GLASS */}
       <div
         onClick={onClose}
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
       />
 
-      {/* 🔴 COMPACT SINGLE REGION MODAL  */}
+      {/*  COMPACT SINGLE REGION MODAL  */}
       <div
         className="
           relative z-10
@@ -114,12 +113,10 @@ const Contact = ({ isOpen, onClose }) => {
 
         <div className="px-5 sm:px-6 py-4 space-y-4">
           
-          {/* Brief Context */}
           <p className="text-[11px] sm:text-xs leading-5 text-gray-600 font-medium bg-gray-50 px-4 py-3 rounded-xl border border-gray-100">
             For urgent assistance or registry queries, our coordination team is available 24/7 to guide you through the process.
           </p>
 
-          {/* CONTACT TILES GRID */}
           <div className="space-y-2.5">
             {contactChannels.map((item, index) => (
               <div

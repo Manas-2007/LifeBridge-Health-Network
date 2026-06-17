@@ -4,7 +4,6 @@ import { MapPin, Droplets, Users } from 'lucide-react';
 const Hero = ({ onRegisterClick, onPatientAuth }) => {
   return (
     <section className="relative pt-[100px] sm:pt-[120px] pb-10 sm:pb-15 bg-white overflow-hidden">
-      {/* Custom Animation Style */}
       <style>{`
         @keyframes float {
           0%, 100% { transform: translateY(35px); }
@@ -15,11 +14,9 @@ const Hero = ({ onRegisterClick, onPatientAuth }) => {
         }
       `}</style>
 
-      {/* Main Container - Adjusted gap for mobile */}
       <div className="w-full max-w-[1500px] mx-auto px-6 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-12">
         
         {/* Left Content */}
-        {/* Text Center on mobile, Left on Desktop */}
         <div className="md:w-1/2 space-y-4 sm:space-y-6 flex flex-col items-center md:items-start text-center md:text-left mt-4 md:mt-0">
           
           <div className="text-red-600 font-[700] tracking-widest text-[10px] sm:text-xs uppercase bg-red-50/50 px-3 py-1 rounded-full w-fit">
@@ -35,10 +32,9 @@ const Hero = ({ onRegisterClick, onPatientAuth }) => {
             A single blood donation can save up to three lives. Be a hero. Be a donor.
           </p>
 
-          {/* Buttons Container */}
           <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-3 sm:gap-4 pt-2 sm:pt-4">
             
-            {/* 🔴 I Need Blood Button (DOCTOR) */}
+            {/*  I Need Blood Button (DOCTOR) */}
             <button 
               onClick={() => onPatientAuth("login")}
               className="flex items-center justify-center sm:justify-start gap-3 bg-red-600 text-white px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl font-bold hover:bg-red-700 transition-all shadow-[0_8px_20px_rgba(220,38,38,0.25)] active:scale-[0.98] w-full sm:w-auto"
@@ -54,7 +50,7 @@ const Hero = ({ onRegisterClick, onPatientAuth }) => {
               </div>
             </button>
 
-            {/* ⚪ I Want to Donate Button (DONOR) */}
+            {/*  I Want to Donate Button (DONOR) */}
             <button 
               onClick={onRegisterClick}
               className="flex items-center justify-center sm:justify-start gap-3 border-2 border-red-200 bg-white text-red-600 px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl font-bold hover:border-red-600 hover:bg-red-50 transition-all group active:scale-[0.98] w-full sm:w-auto shadow-sm"

@@ -32,7 +32,7 @@ const DonorPool = () => {
     }
   };
 
-  // ================= 🔄 LOAD LIVE DATA CHANNEL =================
+  // =================LOAD LIVE DATA CHANNEL =================
   const syncDonorPoolEngine = async () => {
     try {
       setLoading(true);
@@ -82,7 +82,7 @@ const DonorPool = () => {
         .filter(req => req.isPrivate === true && req.name === patientData.name && req.status !== 'Completed' && req.status !== 'Accepted')
         .map(req => req.targetDonorId);
       
-      setSentRequests(new Set(activeIds)); // Auto-update buttons
+      setSentRequests(new Set(activeIds)); 
     } catch (error) {
       console.error("Error fetching sent requests from DB:", error);
     }
@@ -97,7 +97,7 @@ const DonorPool = () => {
   }, [requestId, location.search]);
 
 
- // ================= ✨ NEW DIRECT REQUEST LOGIC =================
+ // =================NEW DIRECT REQUEST LOGIC =================
   const sendDirectRequest = async (donor) => {
     const patientData = getCurrentPatient();
     
@@ -109,7 +109,6 @@ const DonorPool = () => {
     const hospitalName = window.prompt(`Please enter the Hospital/Location where ${donor.name} needs to come:`, "");
     if (hospitalName === null || hospitalName.trim() === "") return; 
 
-    // 🔴 NEW PROMPT: BLOOD GROUP
     const bloodGroupInput = window.prompt("Enter required Blood Group (e.g., B+):", patientData.bloodGroup || donor.bloodGroup);
     if (bloodGroupInput === null || bloodGroupInput.trim() === "") return;
 
@@ -151,7 +150,7 @@ const DonorPool = () => {
     }
   };
 
-  // 🟢 1. SUCCESS BUTTON LOGIC
+  //  1. SUCCESS BUTTON LOGIC
   const handleDonationSuccess = async (donorName) => {
     if (window.confirm(`Has ${donorName} successfully donated blood? Confirming will move this request to your history.`)) {
       try {
@@ -173,7 +172,7 @@ const DonorPool = () => {
     }
   };
 
-  // 🔴 2. IGNORE/CANCEL BUTTON LOGIC
+  //  2. IGNORE/CANCEL BUTTON LOGIC
   const handleIgnoreRequest = async () => {
     if (window.confirm(`Are you sure you want to decline this request? It will be returned to the public pool for other available donors.`)) {
       try {
@@ -199,7 +198,7 @@ const DonorPool = () => {
 
   return (
 <div className="bg-transparent pb-14 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.4s_ease-out] mt-4 md:mt-0 lg:mt-2">      
-      {/* 🔴 1. PORTAL BRANDING DIRECTORY NAVIGATION HEADER */}
+      {/* 1. PORTAL BRANDING DIRECTORY NAVIGATION HEADER */}
       <section className="w-full flex flex-col md:flex-row items-center justify-between gap-4 mb-6 bg-white p-5 rounded-2xl border border-gray-200/80 shadow-md text-left">
         <div className="flex items-center gap-3 w-full md:w-auto">
           <div className="p-2 bg-red-50 rounded-xl text-[#880808] border border-red-100/40 shadow-sm shrink-0">
@@ -234,7 +233,7 @@ const DonorPool = () => {
         )}
       </section>
 
-      {/* 🔴 INDUSTRIAL INSULATED BANNER WARNING LAYER IN EXCLUSIVE VIEW */}
+      {/* INDUSTRIAL INSULATED BANNER WARNING LAYER IN EXCLUSIVE VIEW */}
       {requestId && !loading && filteredDonors.length > 0 && (
         <div className="bg-red-50/60 border border-red-200/70 p-4 rounded-2xl flex gap-3 text-left mb-5 animate-[fadeIn_0.3s_ease-out]">
           <MdOutlineWarningAmber className="text-[#880808] text-xl shrink-0 mt-0.5" />
@@ -244,7 +243,7 @@ const DonorPool = () => {
         </div>
       )}
 
-      {/* 🔴 2. ACTIVE PROFILE DISPLAY MATRIX */}
+      {/* 2. ACTIVE PROFILE DISPLAY MATRIX */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
         {loading ? (
           <div className="col-span-full py-16 text-center text-gray-400 font-semibold animate-pulse uppercase text-xs tracking-wider bg-white rounded-2xl border p-5 shadow-sm">
@@ -298,7 +297,7 @@ const DonorPool = () => {
                 </div>
               </div>
 
-              {/* 🔴 CONTROL INTERACTION BUTTONS CONDITIONAL COMPILER BRIDGE */}
+              {/*  CONTROL INTERACTION BUTTONS CONDITIONAL COMPILER BRIDGE */}
               <div className="flex flex-col gap-2 w-full mt-auto pt-1">
                 {donor.isLiveCommitted ? (
                   <div className="space-y-2 w-full animate-[fadeIn_0.2s_ease-out]">

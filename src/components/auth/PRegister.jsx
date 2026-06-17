@@ -37,17 +37,14 @@ const PRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
         if (formData.password !== formData.confirmPassword) {
           return alert("Passwords do not match!");
         }
-        // Registration API Call
         response = await axios.post("https://lifedrop-backend-orz5.onrender.com/api/patients/register", formData);
       } else {
-        // Login API Call
         response = await axios.post("https://lifedrop-backend-orz5.onrender.com/api/patients/login", {
           patientId: formData.patientId,
           password: formData.password
         });
       }
 
-      // 🔴 CRITICAL SUCCESS CHECK
       if (response.data && response.data.success) {
         // Save to LocalStorage
         localStorage.setItem("token", response.data.token || "session-active");
@@ -72,13 +69,12 @@ const PRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 py-4 sm:p-6 select-none animate-[fadeIn_.2s_ease]">
       
-      {/* 🔴 BACKDROP SMOOTH GLASS */}
       <div 
         onClick={onClose} 
         className="absolute inset-0 bg-black/20 backdrop-blur-sm"
       />
 
-      {/* 🔴 MAIN MODAL CONTAINER */}
+      {/*  MAIN MODAL CONTAINER */}
       <div className="relative z-10 w-full max-w-4xl h-auto max-h-[85vh] sm:max-h-[90vh] md:h-[600px] bg-white rounded-2xl sm:rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col md:flex-row">
         
         {/* CLOSE BUTTON */}
@@ -89,7 +85,7 @@ const PRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
           ✕ 
         </button>
 
-        {/* 🔴 PREMIUM LEFT PANEL (Hidden on Mobile) */}
+        {/*   LEFT PANEL (Hidden on Mobile) */}
         <div className="hidden md:flex md:w-[45%] lg:w-[40%] bg-[#880808] p-8 flex-col justify-between text-white relative overflow-hidden shrink-0">
           {/* Background Icon Glow */}
           <div className="absolute top-[-10%] right-[-10%] opacity-10 pointer-events-none">
@@ -168,10 +164,10 @@ const PRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
           </div>
         </div>
 
-        {/* 🔵 RIGHT SIDE (Form Area) */}
+        {/*  RIGHT SIDE (Form Area) */}
         <div className="flex-1 flex flex-col bg-[#fafafa] min-w-0 min-h-0">
           
-          {/* HEADER ROW (FIXED OVERLAP) */}
+          {/* HEADER ROW  */}
           <div className="pt-14 sm:pt-8 pb-3 px-5 md:px-8 shrink-0">
             <div className="mb-5 sm:mb-6">
               <div className="flex bg-gray-200/60 rounded-full p-1 shadow-inner border border-gray-100">
@@ -212,15 +208,14 @@ const PRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
 
           <hr className="border-t border-gray-100 shrink-0 m-0 p-0" />
               
-          {/* 🔴 FORM WRAPPER (To enable Enter/Go Key) */}
+          {/*  FORM WRAPPER */}
           <form onSubmit={handleSubmit} className="flex-1 flex flex-col min-h-0 overflow-hidden">
             
             {/* SCROLLABLE FORM CONTAINER */}
             <div className="flex-1 overflow-y-auto overscroll-contain custom-red-scrollbar px-5 md:px-8 py-5">
               {mode === "register" ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-                  {/* Patient ID Field mapped as Doctor Staff ID */}
-                  <div>
+\                  <div>
                     <label className="block text-[11px] sm:text-xs font-[500] text-gray-600 mb-1.5 uppercase tracking-wide">
                       License / Staff ID
                     </label>
@@ -233,8 +228,7 @@ const PRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
                     />
                   </div>
 
-                  {/* Full Name Mapped as Physician Name */}
-                  <div>
+\                  <div>
                     <label className="block text-[11px] sm:text-xs font-[500] text-gray-600 mb-1.5 uppercase tracking-wide">
                       Physician Name
                     </label>
@@ -383,13 +377,12 @@ const PRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
             {/* FOOTER ACTIONS */}
             <div className="p-4 md:p-5 bg-white border-t border-gray-100 shrink-0">
               <button 
-                type="submit" /* 🔴 YAHAN TYPE SUBMIT LAGA HAI, ONCLICK HATA DIYA */
+                type="submit"
                 disabled={loading}
                 className="w-full flex items-center justify-center gap-2 bg-[#880808] hover:bg-red-800 text-white font-bold py-3 sm:py-3.5 text-xs sm:text-sm tracking-wide uppercase rounded-[14px] transition-all active:scale-[0.98] shadow-md hover:shadow-lg cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>
-                    {/* 🌀 CIRCULAR SPINNER SVG */}
                     <svg className="animate-spin h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>

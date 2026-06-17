@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
-import { 
-  FiUser, FiMail, FiPhone, FiMapPin, FiEdit2, FiShield, 
-  FiCheckCircle, FiDroplet, FiHeart, FiActivity, FiAward, FiCompass, FiSave 
+import React, { useState } from "react";
+import {
+  FiUser,
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiEdit2,
+  FiShield,
+  FiCheckCircle,
+  FiDroplet,
+  FiHeart,
+  FiActivity,
+  FiAward,
+  FiCompass,
+  FiSave,
 } from "react-icons/fi";
 
 const Profile = ({ user, onUpdateProfile }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [activeTab, setActiveTab] = useState('biometrics');
-  
+  const [activeTab, setActiveTab] = useState("biometrics");
+
   const [isEditingBiometrics, setIsEditingBiometrics] = useState(false);
-  
+
   const userData = user || {
     name: "Aanya Verma",
     email: "aanya.verma@domain.com",
@@ -18,35 +29,31 @@ const Profile = ({ user, onUpdateProfile }) => {
     phone: "+91 98765 43210",
   };
 
-  // 🔴 LOCAL STATE FOR BIOMETRICS 
   const [biometrics, setBiometrics] = useState({
     weight: userData.weight || "72",
     height: userData.height || "178",
-    age: userData.age || "24"
+    age: userData.age || "24",
   });
 
   const handleBiometricChange = (field, value) => {
-    setBiometrics(prev => ({ ...prev, [field]: value }));
+    setBiometrics((prev) => ({ ...prev, [field]: value }));
   };
 
   const getInitials = (name) => {
     if (!name) return "??";
     const parts = name.split(" ");
-    return parts.length > 1 ? (parts[0][0] + parts[1][0]).toUpperCase() : name[0].toUpperCase();
+    return parts.length > 1
+      ? (parts[0][0] + parts[1][0]).toUpperCase()
+      : name[0].toUpperCase();
   };
 
   return (
     <div className="bg-transparent pb-16 w-full mx-auto max-w-[1700px] select-none animate-[fadeIn_0.5s_ease-out] mt-4 md:mt-0 lg:mt-2">
-
-      {/* ================= 🔴GLASS OVERLAY HERO HEAD ================= */}
       <div className="relative bg-gradient-to-br from-white via-white to-gray-50/40 rounded-3xl p-5 sm:p-6 md:p-10 border border-gray-400/70 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] overflow-hidden mb-6 sm:mb-8 text-left group">
-        
-        {/* Designer Background Vector Elements */}
         <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-gradient-to-bl from-red-500/10 via-transparent to-transparent rounded-bl-full pointer-events-none transition-transform duration-700 group-hover:scale-110" />
         <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-gray-50 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start justify-between gap-5 sm:gap-6 w-full">
-          
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 md:gap-8 w-full sm:w-auto">
             <div className="relative shrink-0">
               <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-neutral-900 rounded-[20px] sm:rounded-[24px] flex items-center justify-center text-white text-xl sm:text-2xl md:text-3xl font-bold shadow-[0_10px_25px_-5px_rgba(0,0,0,0.3)] transition-all duration-500 hover:rotate-3">
@@ -59,18 +66,19 @@ const Profile = ({ user, onUpdateProfile }) => {
 
             {/* Title Identity Parameters Block */}
             <div className="text-center sm:text-left min-w-0 w-full sm:w-auto">
-              
               <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 justify-center sm:justify-start">
                 <h1 className="text-2xl md:text-3xl font-bold text-neutral-900 tracking-tight leading-none">
                   {userData.name}
                 </h1>
                 <span className="inline-flex items-center justify-center gap-1.5 px-3 py-1 sm:px-2.5 sm:py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200/50 uppercase tracking-widest shadow-sm shadow-emerald-100/40">
-                  <FiCheckCircle size={12} className="animate-pulse shrink-0" /> Verified Donor
+                  <FiCheckCircle size={12} className="animate-pulse shrink-0" />{" "}
+                  Verified Donor
                 </span>
               </div>
-              
+
               <p className="text-gray-400 font-medium mt-2 flex items-center justify-center sm:justify-start gap-1.5 text-xs sm:text-sm">
-                <FiMapPin className="text-[#880808] shrink-0" size={15} /> {userData.location}
+                <FiMapPin className="text-[#880808] shrink-0" size={15} />{" "}
+                {userData.location}
               </p>
 
               <div className="mt-4 sm:mt-5 flex items-center justify-center sm:justify-start gap-2.5 w-full">
@@ -86,17 +94,12 @@ const Profile = ({ user, onUpdateProfile }) => {
               </div>
             </div>
           </div>
-          
         </div>
       </div>
 
-      {/* ================= 🔴 ASYMMETRIC SYSTEM DASHBOARD GRID ================= */}
+      {/* =================  ASYMMETRIC SYSTEM DASHBOARD GRID ================= */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 items-start">
-
-        {/* CORE DATA CONTROL ZONE (Left Workspace) */}
         <div className="lg:col-span-2 space-y-5 sm:space-y-6">
-          
-          {/* SEC 1: COMPACT DATA MODULE */}
           <div className="bg-white rounded-3xl p-5 sm:p-6 md:p-8 border border-gray-400/70 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] text-left">
             <h3 className="text-[15px] sm:text-lg font-bold text-neutral-900 tracking-wide mb-4 sm:mb-6">
               Personal Credentials
@@ -104,10 +107,26 @@ const Profile = ({ user, onUpdateProfile }) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {[
-                { icon: FiUser, label: "Full Name Mapping", value: userData.name },
-                { icon: FiMail, label: "Registered Email Address", value: userData.email },
-                { icon: FiPhone, label: "Secure Contact Phone", value: userData.phone },
-                { icon: FiDroplet, label: "Assigned Blood Matrix", value: `${userData.bloodGroup} (Whole Blood Only)` }
+                {
+                  icon: FiUser,
+                  label: "Full Name Mapping",
+                  value: userData.name,
+                },
+                {
+                  icon: FiMail,
+                  label: "Registered Email Address",
+                  value: userData.email,
+                },
+                {
+                  icon: FiPhone,
+                  label: "Secure Contact Phone",
+                  value: userData.phone,
+                },
+                {
+                  icon: FiDroplet,
+                  label: "Assigned Blood Matrix",
+                  value: `${userData.bloodGroup} (Whole Blood Only)`,
+                },
               ].map((item, i) => (
                 <div key={i} className="space-y-1.5 group/field">
                   <label className="text-[9px] sm:text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-1.5 transition-colors group-hover/field:text-[#880808]">
@@ -129,59 +148,88 @@ const Profile = ({ user, onUpdateProfile }) => {
                 <FiActivity className="text-[#880808]" />
                 Biometric Registry
               </h3>
-              <button 
+              <button
                 onClick={() => {
                   if (isEditingBiometrics) {
                     if (onUpdateProfile) {
-                      onUpdateProfile({ 
-                        age: biometrics.age, 
-                        weight: biometrics.weight, 
-                        height: biometrics.height 
+                      onUpdateProfile({
+                        age: biometrics.age,
+                        weight: biometrics.weight,
+                        height: biometrics.height,
                       });
                     }
                   }
                   setIsEditingBiometrics(!isEditingBiometrics);
                 }}
                 className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow-sm active:scale-95 ${
-                  isEditingBiometrics 
-                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' 
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-gray-200'
+                  isEditingBiometrics
+                    ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200 border border-gray-200"
                 }`}
               >
                 {isEditingBiometrics ? (
-                  <><FiSave size={12} /> Save</>
+                  <>
+                    <FiSave size={12} /> Save
+                  </>
                 ) : (
-                  <><FiEdit2 size={12} /> Edit</>
+                  <>
+                    <FiEdit2 size={12} /> Edit
+                  </>
                 )}
               </button>
             </div>
-            
+
             <div className="grid grid-cols-3 gap-2 sm:gap-4">
               {[
-                { key: 'weight', label: "Patient Mass", value: biometrics.weight, unit: "kg" },
-                { key: 'height', label: "Vertical Scale", value: biometrics.height, unit: "cm" },
-                { key: 'age', label: "Age Metric", value: biometrics.age, unit: "Yrs" }
+                {
+                  key: "weight",
+                  label: "Patient Mass",
+                  value: biometrics.weight,
+                  unit: "kg",
+                },
+                {
+                  key: "height",
+                  label: "Vertical Scale",
+                  value: biometrics.height,
+                  unit: "cm",
+                },
+                {
+                  key: "age",
+                  label: "Age Metric",
+                  value: biometrics.age,
+                  unit: "Yrs",
+                },
               ].map((m, i) => (
-                <div key={i} className={`text-center p-2.5 sm:p-4 border rounded-2xl relative overflow-hidden group transition-all ${
-                  isEditingBiometrics ? 'bg-white border-red-300 shadow-inner' : 'bg-gradient-to-b from-red-50/30 to-red-50/10 border-red-500/40'
-                }`}>
+                <div
+                  key={i}
+                  className={`text-center p-2.5 sm:p-4 border rounded-2xl relative overflow-hidden group transition-all ${
+                    isEditingBiometrics
+                      ? "bg-white border-red-300 shadow-inner"
+                      : "bg-gradient-to-b from-red-50/30 to-red-50/10 border-red-500/40"
+                  }`}
+                >
                   <p className="text-[7px] sm:text-[9px] font-bold text-red-700/80 uppercase tracking-widest mb-1">
                     {m.label}
                   </p>
-                  
+
                   {isEditingBiometrics ? (
-                    <input 
-                      type="number" 
+                    <input
+                      type="number"
                       value={m.value}
-                      onChange={(e) => handleBiometricChange(m.key, e.target.value)}
+                      onChange={(e) =>
+                        handleBiometricChange(m.key, e.target.value)
+                      }
                       className="w-full text-center text-xs sm:text-base font-bold text-neutral-900 tracking-tight bg-transparent border-b border-red-200 focus:border-[#880808] outline-none pb-0.5 transition-colors"
                     />
                   ) : (
                     <p className="text-xs sm:text-base font-bold text-neutral-800 tracking-tight mt-1">
-                      {m.value} <span className="text-[8px] sm:text-[10px] text-gray-500 font-medium">{m.unit}</span>
+                      {m.value}{" "}
+                      <span className="text-[8px] sm:text-[10px] text-gray-500 font-medium">
+                        {m.unit}
+                      </span>
                     </p>
                   )}
-                  
+
                   {isEditingBiometrics && (
                     <span className="text-[7px] sm:text-[8px] font-semibold text-gray-400 uppercase tracking-widest mt-1 block">
                       {m.unit}
@@ -193,9 +241,7 @@ const Profile = ({ user, onUpdateProfile }) => {
           </div>
         </div>
 
-        {/* METRICS SIDEBAR COMPONENT (Right Column) */}
         <div className="space-y-5 sm:space-y-6">
-
           {/* SEC 3: EXECUTIVE DONOR FOOTPRINT OVERLAY */}
           <div className="bg-neutral-950 rounded-3xl p-5 sm:p-6 md:p-8 text-white relative overflow-hidden shadow-[0_12px_30px_-8px_rgba(0,0,0,0.2)] text-left group">
             <div className="absolute -right-8 -bottom-8 opacity-[0.03] text-white transition-transform duration-700 group-hover:scale-110 pointer-events-none">
@@ -210,15 +256,32 @@ const Profile = ({ user, onUpdateProfile }) => {
 
             <div className="space-y-3 sm:space-y-4 relative z-10 text-xs sm:text-sm">
               {[
-                { k: "Donor Tenure Since", v: "2023", highlight: "text-neutral-200" },
-                { k: "Lifetime Impact", v: "36 Lives Saved", highlight: "text-red-400 font-bold" },
-                { k: "Next Cycle Window", v: "June 2026", highlight: "text-emerald-400 font-bold" }
+                {
+                  k: "Donor Tenure Since",
+                  v: "2023",
+                  highlight: "text-neutral-200",
+                },
+                {
+                  k: "Lifetime Impact",
+                  v: "36 Lives Saved",
+                  highlight: "text-red-400 font-bold",
+                },
+                {
+                  k: "Next Cycle Window",
+                  v: "June 2026",
+                  highlight: "text-emerald-400 font-bold",
+                },
               ].map((d, i) => (
-                <div key={i} className="flex justify-between items-baseline border-t border-white/[0.06] pt-3 sm:pt-4 first:border-0 first:pt-0">
+                <div
+                  key={i}
+                  className="flex justify-between items-baseline border-t border-white/[0.06] pt-3 sm:pt-4 first:border-0 first:pt-0"
+                >
                   <span className="text-neutral-400 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest">
                     {d.k}
                   </span>
-                  <span className={`tracking-wide text-[11px] sm:text-sm ${d.highlight}`}>
+                  <span
+                    className={`tracking-wide text-[11px] sm:text-sm ${d.highlight}`}
+                  >
                     {d.v}
                   </span>
                 </div>
@@ -236,14 +299,13 @@ const Profile = ({ user, onUpdateProfile }) => {
               Clinical Health Insight
             </h4>
             <p className="text-[10px] sm:text-xs text-red-800 font-medium leading-relaxed mt-0.5">
-              Maintaining regular donation habits enhances total vascular circulation cycles and safely supports optimal metabolic iron balance thresholds within body systems.
+              Maintaining regular donation habits enhances total vascular
+              circulation cycles and safely supports optimal metabolic iron
+              balance thresholds within body systems.
             </p>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 };
