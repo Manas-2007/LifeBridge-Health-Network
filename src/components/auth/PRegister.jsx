@@ -215,7 +215,7 @@ const PRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
             <div className="flex-1 overflow-y-auto overscroll-contain custom-red-scrollbar px-5 md:px-8 py-5">
               {mode === "register" ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-\                  <div>
+                  <div>
                     <label className="block text-[11px] sm:text-xs font-[500] text-gray-600 mb-1.5 uppercase tracking-wide">
                       License / Staff ID
                     </label>
@@ -228,7 +228,7 @@ const PRegister = ({ onClose, mode, setMode, onLoginSuccess }) => {
                     />
                   </div>
 
-\                  <div>
+                  <div>
                     <label className="block text-[11px] sm:text-xs font-[500] text-gray-600 mb-1.5 uppercase tracking-wide">
                       Physician Name
                     </label>
